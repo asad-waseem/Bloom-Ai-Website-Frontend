@@ -12,6 +12,8 @@ import { FAQSection } from '@/components/FAQSection'
 import { PartnerMarquee } from '@/components/PartnerMarquee'
 import { ContactFormSection } from '@/components/ContactFormSection'
 import { AnimatedHeroBackground } from '@/components/AnimatedHeroBackground'
+import { Chatbot } from '@/components/Chatbot'
+import { BackToTop } from '@/components/BackToTop'
 import { Toaster } from '@/components/ui/toaster'
 import { CheckCircle2 } from 'lucide-react'
 
@@ -25,7 +27,6 @@ export default function Home() {
       <PartnerMarquee />
       <FeatureGrid />
 
-      {/* Main Capabilities Section */}
       <section id="capabilities" className="py-32 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-[50rem] h-[50rem] bg-primary/5 blur-[150px] rounded-full pointer-events-none -translate-x-1/2" />
         <div className="container mx-auto px-4 relative z-10">
@@ -42,7 +43,6 @@ export default function Home() {
       <StatsSection />
       <PricingSection />
 
-      {/* Testimonials Section */}
       <section id="testimonials" className="py-32 relative overflow-hidden bg-white/[0.01]">
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 blur-[120px] rounded-full pointer-events-none translate-x-1/4" />
         <div className="container mx-auto px-4">
@@ -56,7 +56,6 @@ export default function Home() {
 
       <FAQSection />
 
-      {/* Unified Contact Section */}
       <section id="contact" className="py-32 container mx-auto px-4">
         <div className="glass-card p-8 md:p-20 rounded-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-20 items-center border border-white/10 overflow-hidden relative group">
           <div className="absolute -top-32 -right-32 w-[30rem] h-[30rem] bg-primary/10 blur-[150px] rounded-full group-hover:scale-125 transition-transform duration-1000" />
@@ -92,6 +91,8 @@ export default function Home() {
       </section>
 
       <Footer />
+      <Chatbot />
+      <BackToTop />
       <Toaster />
     </main>
   )

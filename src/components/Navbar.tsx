@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button'
 import { MobileNav } from './MobileNav'
 import { cn } from '@/lib/utils'
 import { useToast } from '@/hooks/use-toast'
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from './ThemeProvider'
 
 export const Logo = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("w-8 h-8", className)}>
@@ -18,6 +20,7 @@ export const Logo = ({ className }: { className?: string }) => (
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false)
+  const { theme, toggleTheme } = useTheme()
   const { toast } = useToast()
 
   useEffect(() => {
@@ -29,7 +32,7 @@ export const Navbar: React.FC = () => {
   const handleAction = (action: string) => {
     toast({
       title: "Action Initiated",
-      description: `The ${action} sequence has been started. Redirecting to secure gateway...`,
+      description: `The ${action} sequence has been started.`,
     })
   }
 
@@ -50,14 +53,23 @@ export const Navbar: React.FC = () => {
         </Link>
         
         <div className="hidden md:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-muted-foreground/80">
-          <Link href="#capabilities" className="hover:text-primary transition-all hover:scale-105">Capabilities</Link>
-          <Link href="#pricing" className="hover:text-primary transition-all hover:scale-105">Infrastructure</Link>
-          <Link href="#testimonials" className="hover:text-primary transition-all hover:scale-105">Success</Link>
-          <Link href="#contact" className="hover:text-primary transition-all hover:scale-105">Contact</Link>
+          <Link href="#capabilities" className="hover:text-primary transition-all">Capabilities</Link>
+          <Link href="#pricing" className="hover:text-primary transition-all">Pricing</Link>
+          <Link href="#testimonials" className="hover:text-primary transition-all">Success</Link>
+          <Link href="#contact" className="hover:text-primary transition-all">Contact</Link>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 mr-2">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={toggleTheme}
+            className="rounded-full h-10 w-10 glass border-white/5"
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </Button>
+          
+          <div className="hidden sm:flex items-center gap-2">
             <Button 
               variant="ghost" 
               onClick={() => handleAction('Login')}
@@ -67,9 +79,9 @@ export const Navbar: React.FC = () => {
             </Button>
             <Button 
               onClick={() => handleAction('Onboarding')}
-              className="bg-primary hover:bg-primary/90 rounded-full px-6 text-[10px] font-bold uppercase tracking-widest h-10 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all"
+              className="bg-primary hover:bg-primary/90 rounded-full px-6 text-[10px] font-bold uppercase tracking-widest h-10 shadow-lg shadow-primary/20 transition-all"
             >
-              Join Platform
+              Join
             </Button>
           </div>
           <MobileNav />
