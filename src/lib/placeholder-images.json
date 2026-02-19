@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-abstract",
+      "description": "Abstract AI neural network background",
+      "imageUrl": "https://images.unsplash.com/photo-1744130268188-3b5a7ceb436b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxuZXVyYWwlMjBuZXR3b3JrJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzcxNTM0NDI5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "neural network abstract"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "Portrait of a tech professional",
+      "imageUrl": "https://images.unsplash.com/photo-1643028588901-87770ed4469c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwcm9mZXNzaW9uYWwlMjBwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NzE1MzQ0Mjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional person portrait"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Portrait of a creative designer",
+      "imageUrl": "https://images.unsplash.com/photo-1753162659622-371949a713ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzbWlsaW5nJTIwY3JlYXRpdmUlMjB3b21hbnxlbnwwfHx8fDE3NzE1MzQ0Mjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smiling creative woman"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "Portrait of an entrepreneur",
+      "imageUrl": "https://images.unsplash.com/photo-1748603159892-3ec8fe81a5cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29uZmlkZW50JTIwZW50cmVwcmVuZXVyfGVufDB8fHx8MTc3MTUzNDQyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "confident entrepreneur"
+    }
+  ]
 }
