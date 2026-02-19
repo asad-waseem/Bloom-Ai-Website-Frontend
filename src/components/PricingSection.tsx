@@ -5,6 +5,7 @@ import { Check, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { useToast } from '@/hooks/use-toast'
 
 const tiers = [
   {
@@ -34,6 +35,15 @@ const tiers = [
 ]
 
 export const PricingSection: React.FC = () => {
+  const { toast } = useToast()
+
+  const handleTierSelect = (tier: string) => {
+    toast({
+      title: `${tier} Tier Selected`,
+      description: "Provisioning your environment... You'll be notified via email once complete.",
+    })
+  }
+
   return (
     <section id="pricing" className="py-24 relative">
       <div className="container mx-auto px-4">
@@ -79,6 +89,7 @@ export const PricingSection: React.FC = () => {
               </CardContent>
               <CardFooter>
                 <Button 
+                  onClick={() => handleTierSelect(tier.name)}
                   className={`w-full h-12 rounded-xl font-bold transition-all ${tier.popular ? 'bg-primary hover:bg-primary/90 button-glow' : 'glass border-white/10 hover:bg-white/5'}`}
                   variant={tier.popular ? 'default' : 'outline'}
                 >

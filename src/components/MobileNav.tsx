@@ -3,11 +3,14 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Sparkles, Menu, X, ArrowRight, Github, Twitter } from 'lucide-react'
+import { Menu, ArrowRight, Github, Twitter } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet'
+import { Logo } from './Navbar'
+import { useToast } from '@/hooks/use-toast'
 
 export const MobileNav: React.FC = () => {
   const [open, setOpen] = useState(false)
+  const { toast } = useToast()
 
   const navLinks = [
     { name: 'Features', href: '#capabilities' },
@@ -15,6 +18,14 @@ export const MobileNav: React.FC = () => {
     { name: 'Success', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ]
+
+  const handleAction = (action: string) => {
+    setOpen(false)
+    toast({
+      title: "Mobile Action Triggered",
+      description: `Initializing ${action} flow for mobile devices.`,
+    })
+  }
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -26,8 +37,8 @@ export const MobileNav: React.FC = () => {
       <SheetContent side="right" className="w-full sm:max-w-xs bg-background/95 backdrop-blur-2xl border-white/5 p-0 flex flex-col">
         <SheetHeader className="p-6 border-b border-white/5">
           <SheetTitle className="flex items-center gap-2">
-             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <Sparkles className="text-white w-5 h-5" />
+             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
+              <Logo className="w-6 h-6" />
             </div>
             <span className="text-lg font-black tracking-tighter">BLOOM</span>
           </SheetTitle>
@@ -49,10 +60,17 @@ export const MobileNav: React.FC = () => {
           </nav>
           
           <div className="pt-8 space-y-4">
-            <Button className="w-full bg-primary hover:bg-primary/90 rounded-xl h-14 text-sm font-bold button-glow">
+            <Button 
+              onClick={() => handleAction('Free Registration')}
+              className="w-full bg-primary hover:bg-primary/90 rounded-xl h-14 text-sm font-bold button-glow"
+            >
               Get Started Free
             </Button>
-            <Button variant="outline" className="w-full glass rounded-xl h-14 text-sm font-bold border-white/10">
+            <Button 
+              variant="outline" 
+              onClick={() => handleAction('Client Portal')}
+              className="w-full glass rounded-xl h-14 text-sm font-bold border-white/10"
+            >
               Client Portal
             </Button>
           </div>

@@ -3,8 +3,25 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, ChevronRight } from 'lucide-react'
+import { useToast } from '@/hooks/use-toast'
 
 export const HeroSection: React.FC = () => {
+  const { toast } = useToast()
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Welcome to the Future",
+      description: "Redirecting you to the Bloom dashboard. Prepare for synthesis.",
+    })
+  }
+
+  const handleRequestDemo = () => {
+    toast({
+      title: "Demo Request Received",
+      description: "An AI solutions architect will contact you within 15 minutes.",
+    })
+  }
+
   return (
     <section className="relative pt-24 pb-12 md:pt-36 md:pb-20 flex flex-col items-center text-center">
       <div className="absolute top-0 left-0 w-full h-full hero-glow pointer-events-none" />
@@ -26,11 +43,20 @@ export const HeroSection: React.FC = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-16 duration-700 delay-300">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-xs h-14 px-8 rounded-full group font-black button-glow transition-all">
+          <Button 
+            size="lg" 
+            onClick={handleGetStarted}
+            className="bg-primary hover:bg-primary/90 text-xs h-14 px-8 rounded-full group font-black button-glow transition-all"
+          >
             Get Started Free
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button size="lg" variant="outline" className="glass text-xs h-14 px-8 rounded-full font-black border-white/10 hover:bg-white/5 transition-all">
+          <Button 
+            size="lg" 
+            variant="outline" 
+            onClick={handleRequestDemo}
+            className="glass text-xs h-14 px-8 rounded-full font-black border-white/10 hover:bg-white/5 transition-all"
+          >
             Request Demo
           </Button>
         </div>
