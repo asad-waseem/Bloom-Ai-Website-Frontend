@@ -34,7 +34,10 @@ const chatGuidePrompt = ai.definePrompt({
   - Performance: 12ms avg latency, 850k throughput.
   - Support: 24/7 technical support for Pro/Enterprise.
   
-  Be helpful, professional, and slightly futuristic in your tone. If you don't know something, ask them to contact the solutions architect via the demo button.`,
+  HUMAN CONTACT:
+  If the user wants to talk to a human, needs a custom quote, or has complex technical requirements, tell them they can connect directly with our Lead Engineer via the WhatsApp button in this chat window.
+  
+  Be helpful, professional, and slightly futuristic in your tone.`,
   prompt: 'User: {{{message}}}',
 });
 
