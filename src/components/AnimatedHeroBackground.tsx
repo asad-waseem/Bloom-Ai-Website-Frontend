@@ -8,11 +8,12 @@ export const AnimatedHeroBackground: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) return
 
     let animationFrameId: number
     let particles: Particle[] = []
+    let mouse = { x: -100, y: -100 }
 
     const resize = () => {
       canvas.width = window.innerWidth
@@ -27,39 +28,50 @@ export const AnimatedHeroBackground: React.FC = () => {
       vy: number
       size: number
       color: string
+      opacity: number
 
       constructor(w: number, h: number) {
         this.x = Math.random() * w
         this.y = Math.random() * h
-        this.vx = (Math.random() - 0.5) * 0.3
-        this.vy = (Math.random() - 0.5) * 0.3
-        this.size = Math.random() * 2 + 0.5
+        this.vx = (Math.random() - 0.5) * 0.2
+        this.vy = (Math.random() - 0.5) * 0.2
+        this.size = Math.random() * 1.5 + 0.5
         this.color = Math.random() > 0.5 ? '#3B82F6' : '#8B5CF6'
+        this.opacity = Math.random() * 0.5 + 0.2
       }
 
       update(w: number, h: number) {
         this.x += this.vx
         this.y += this.vy
-        if (this.x < 0 || this.x > w) this.vx *= -1
-        if (this.y < 0 || this.y > h) this.vy *= -1
+
+        // Smooth boundaries
+        if (this.x < 0) this.x = w
+        if (this.x > w) this.x = 0
+        if (this.y < 0) this.y = h
+        if (this.y > h) this.y = 0
+
+        // Subtle mouse interaction
+        const dx = mouse.x - this.x
+        const dy = mouse.y - this.y
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        if (dist < 100) {
+          this.x -= dx * 0.01
+          this.y -= dy * 0.01
+        }
       }
 
       draw(ctx: CanvasRenderingContext2D) {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
         ctx.fillStyle = this.color
-        ctx.globalAlpha = 0.4
+        ctx.globalAlpha = this.opacity
         ctx.fill()
-        
-        // Add subtle glow to particle
-        ctx.shadowBlur = 10
-        ctx.shadowColor = this.color
       }
     }
 
     const init = () => {
       particles = []
-      const count = Math.min(Math.floor(window.innerWidth / 12), 120)
+      const count = Math.min(Math.floor(window.innerWidth / 15), 80)
       for (let i = 0; i < count; i++) {
         particles.push(new Particle(canvas.width, canvas.height))
       }
@@ -67,24 +79,22 @@ export const AnimatedHeroBackground: React.FC = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      ctx.shadowBlur = 0 // Reset shadow for lines
       
       particles.forEach((p, i) => {
         p.update(canvas.width, canvas.height)
         p.draw(ctx)
         
-        // Connect particles with neural-like mesh
         for (let j = i + 1; j < particles.length; j++) {
           const dx = p.x - particles[j].x
           const dy = p.y - particles[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 180) {
+          if (dist < 150) {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(particles[j].x, particles[j].y)
             ctx.strokeStyle = p.color
-            ctx.globalAlpha = (1 - dist / 180) * 0.15
-            ctx.lineWidth = 0.8
+            ctx.globalAlpha = (1 - dist / 150) * 0.1
+            ctx.lineWidth = 0.5
             ctx.stroke()
           }
         }
@@ -92,12 +102,19 @@ export const AnimatedHeroBackground: React.FC = () => {
       animationFrameId = requestAnimationFrame(animate)
     }
 
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX
+      mouse.y = e.clientY
+    }
+
     window.addEventListener('resize', resize)
+    window.addEventListener('mousemove', handleMouseMove)
     resize()
     animate()
 
     return () => {
       window.removeEventListener('resize', resize)
+      window.removeEventListener('mousemove', handleMouseMove)
       cancelAnimationFrame(animationFrameId)
     }
   }, [])
@@ -105,7 +122,7 @@ export const AnimatedHeroBackground: React.FC = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-60"
+      className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-50"
       style={{ zIndex: 0 }}
     />
   )
