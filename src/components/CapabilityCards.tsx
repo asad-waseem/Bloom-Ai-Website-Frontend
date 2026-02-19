@@ -7,40 +7,40 @@ import { Badge } from '@/components/ui/badge'
 
 const capabilities = [
   {
-    title: 'Cognitive Engine',
-    description: 'Highly specialized LLMs trained for deep reasoning and complex problem solving.',
-    icon: <Brain className="w-6 h-6 text-primary" />,
+    title: 'Reasoning Engine',
+    description: 'Deep chain-of-thought processing for complex decision making and logical inference.',
+    icon: <Brain className="w-5 h-5 text-primary" />,
     badge: 'Enterprise'
   },
   {
-    title: 'Vision Analysis',
-    description: 'Instant object detection and scene understanding with low-latency processing.',
-    icon: <Eye className="w-6 h-6 text-accent" />,
+    title: 'Vision Studio',
+    description: 'Advanced computer vision that identifies spatial relationships and object intent.',
+    icon: <Eye className="w-5 h-5 text-primary" />,
     badge: 'Pro'
   },
   {
-    title: 'Language Matrix',
-    description: 'Dynamic translation across 150+ dialects with native-level linguistic nuance.',
-    icon: <Languages className="w-6 h-6 text-primary" />,
+    title: 'Neural Translation',
+    description: 'Near-instant localization that preserves tone, context, and regional slang.',
+    icon: <Languages className="w-5 h-5 text-primary" />,
     badge: 'Global'
   },
   {
-    title: 'Neural Synthesis',
-    description: 'Generate production-ready assets and complex data models in seconds.',
-    icon: <Sparkles className="w-6 h-6 text-accent" />,
-    badge: 'New'
+    title: 'Asset Synthesis',
+    description: 'Generate production-ready UI components and vector assets with simple prompts.',
+    icon: <Sparkles className="w-5 h-5 text-primary" />,
+    badge: 'Beta'
   },
   {
-    title: 'Velocity Compute',
-    description: 'Edge-optimized inference delivering results at the speed of thought.',
-    icon: <Zap className="w-6 h-6 text-primary" />,
+    title: 'Edge Compute',
+    description: 'Globally distributed inference nodes for zero-latency user experiences.',
+    icon: <Zap className="w-5 h-5 text-primary" />,
     badge: 'Standard'
   },
   {
-    title: 'Deep Search',
-    description: 'Semantic vector search that understands the "why" behind every query.',
-    icon: <SearchCode className="w-6 h-6 text-accent" />,
-    badge: 'Search'
+    title: 'Semantic Search',
+    description: 'Vector-based retrieval that understands conceptual relationships between data points.',
+    icon: <SearchCode className="w-5 h-5 text-primary" />,
+    badge: 'New'
   }
 ]
 
@@ -50,22 +50,19 @@ export const CapabilityCards: React.FC = () => {
       {capabilities.map((cap, idx) => (
         <Card 
           key={idx} 
-          className="group relative glass-card border-white/5 hover:border-primary/40 transition-all duration-500 overflow-hidden cursor-pointer"
+          className="group relative glass-card border-white/5 hover:border-primary/30 transition-all duration-300"
         >
-          <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-20 transition-opacity duration-500">
-            {React.cloneElement(cap.icon as React.ReactElement, { className: "w-24 h-24" })}
-          </div>
-          <CardHeader>
-            <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-              {cap.icon}
+          <CardHeader className="pb-2">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+                {cap.icon}
+              </div>
+              <Badge variant="outline" className="text-[8px] uppercase font-bold tracking-widest border-white/10 bg-white/5 text-muted-foreground">{cap.badge}</Badge>
             </div>
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">{cap.title}</CardTitle>
-              <Badge variant="outline" className="text-[9px] uppercase font-black tracking-widest border-white/10 bg-white/5">{cap.badge}</Badge>
-            </div>
+            <CardTitle className="text-lg font-bold group-hover:text-primary transition-colors">{cap.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">
+            <CardDescription className="text-sm text-muted-foreground leading-relaxed">
               {cap.description}
             </CardDescription>
           </CardContent>

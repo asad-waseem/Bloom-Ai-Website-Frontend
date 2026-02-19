@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 240 10% 2%; /* Extremely dark gray/black */
+    --background: 240 10% 2%; /* Deep charcoal black */
     --foreground: 0 0% 98%;
-    --card: 240 10% 4%;
+    --card: 240 10% 3%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 2%;
     --popover-foreground: 0 0% 98%;
-    --primary: 265 89% 65%; /* Vibrant Purple */
+    --primary: 217 91% 60%; /* Vibrant Blue like Gojiberry */
     --primary-foreground: 0 0% 100%;
     --secondary: 240 5% 10%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 5% 15%;
     --muted-foreground: 240 5% 65%;
-    --accent: 326 100% 64%; /* Electric Pink */
+    --accent: 265 89% 65%; /* Purple accent */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5% 12%;
     --input: 240 5% 12%;
-    --ring: 265 89% 65%;
-    --radius: 1.25rem;
+    --ring: 217 91% 60%;
+    --radius: 1rem;
   }
 }
 
@@ -32,7 +32,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary/30 selection:text-primary-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-bold tracking-tight;
@@ -40,87 +40,63 @@
 }
 
 .glass {
-  @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
 }
 
 .glass-card {
-  @apply bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-md border border-white/[0.1] shadow-2xl;
+  @apply bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-md border border-white/[0.08] shadow-2xl transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply border-white/[0.15] bg-white/[0.05] -translate-y-1;
 }
 
 .animate-gradient-text {
-  background: linear-gradient(to right, #9F57FF, #FF47D3, #7C3AED, #FF47D3);
-  background-size: 300% auto;
+  background: linear-gradient(to right, #3B82F6, #8B5CF6, #3B82F6);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-text 6s ease infinite;
+  animation: gradient-text 4s linear infinite;
 }
 
 @keyframes gradient-text {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.mesh-gradient {
+  background-color: hsl(var(--background));
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(265, 89%, 65%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, hsla(217, 91%, 60%, 0.1) 0px, transparent 50%);
 }
 
 .hero-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(159, 87, 255, 0.2) 0%, rgba(255, 71, 211, 0.1) 30%, transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
 }
 
-.blob-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-  filter: blur(120px);
-  opacity: 0.5;
+.button-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
-.blob {
-  position: absolute;
-  width: 40vw;
-  height: 40vw;
-  background: var(--primary);
-  border-radius: 50%;
-  mix-blend-mode: screen;
-  animation: float 25s infinite alternate;
-}
-
-.blob-pink {
-  background: var(--accent);
-  right: -10%;
-  top: 20%;
-  animation-delay: -5s;
-}
-
-.blob-blue {
-  background: #4776E6;
-  left: -10%;
-  bottom: 10%;
-  animation-delay: -10s;
-}
-
-@keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(5%, 10%) scale(1.1); }
-  66% { transform: translate(-5%, 5%) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
+.button-glow:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--border));
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: rgba(255, 255, 255, 0.2);
 }

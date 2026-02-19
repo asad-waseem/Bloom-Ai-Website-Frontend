@@ -56,34 +56,33 @@ export const ContactFormSection: React.FC = () => {
   }
 
   return (
-    <Card className="bg-white/5 border-white/10 max-w-2xl mx-auto shadow-2xl">
-      <CardHeader className="text-center">
-        <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Get In Touch</CardTitle>
-        <CardDescription>Our AI will ensure your inquiry reaches the right experts instantly.</CardDescription>
+    <Card className="bg-white/[0.02] border-white/5 shadow-2xl backdrop-blur-xl">
+      <CardHeader>
+        <CardTitle className="text-2xl font-black">Contact Us</CardTitle>
+        <CardDescription className="text-xs">Inquiry routing powered by AI Bloom v2.0</CardDescription>
       </CardHeader>
       <CardContent>
         {routingResult ? (
           <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-500">
-            <CheckCircle2 className="w-16 h-16 text-primary mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Thank you!</h3>
-            <p className="text-muted-foreground mb-6">
-              Your inquiry has been successfully routed to the <strong>{routingResult}</strong> team.
-              We'll get back to you shortly.
+            <CheckCircle2 className="w-12 h-12 text-primary mb-4" />
+            <h3 className="text-xl font-bold mb-2">Message Sent</h3>
+            <p className="text-sm text-muted-foreground mb-6">
+              Routed to <strong>{routingResult}</strong>.
             </p>
-            <Button variant="outline" onClick={() => setRoutingResult(null)}>Send Another Message</Button>
+            <Button variant="outline" className="rounded-full text-[10px] uppercase font-bold tracking-widest" onClick={() => setRoutingResult(null)}>New Message</Button>
           </div>
         ) : (
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel className="text-[10px] uppercase font-bold tracking-widest">Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Jane Doe" {...field} className="bg-white/5 border-white/10 focus:border-primary/50" />
+                        <Input placeholder="Full Name" {...field} className="bg-white/5 border-white/5 focus:border-primary/50 rounded-xl" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -94,9 +93,9 @@ export const ContactFormSection: React.FC = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel className="text-[10px] uppercase font-bold tracking-widest">Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="jane@example.com" {...field} className="bg-white/5 border-white/10 focus:border-primary/50" />
+                        <Input placeholder="email@address.com" {...field} className="bg-white/5 border-white/5 focus:border-primary/50 rounded-xl" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -108,11 +107,11 @@ export const ContactFormSection: React.FC = () => {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel className="text-[10px] uppercase font-bold tracking-widest">Message</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="How can we help you today?" 
-                        className="min-h-[150px] bg-white/5 border-white/10 focus:border-primary/50 resize-none" 
+                        placeholder="Project details..." 
+                        className="min-h-[120px] bg-white/5 border-white/5 focus:border-primary/50 resize-none rounded-xl" 
                         {...field} 
                       />
                     </FormControl>
@@ -120,16 +119,13 @@ export const ContactFormSection: React.FC = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-12 rounded-xl group" disabled={isSubmitting}>
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-12 rounded-full group transition-all" disabled={isSubmitting}>
                 {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Routing Inquiry...
-                  </>
+                  <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
                   <>
                     Send Message
-                    <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <Send className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
               </Button>
