@@ -46,23 +46,23 @@ const capabilities = [
 
 export const CapabilityCards: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {capabilities.map((cap, idx) => (
         <Card 
           key={idx} 
-          className="group relative glass-card border-white/5 hover:border-primary/30 transition-all duration-300"
+          className="group relative apple-glass border-transparent hover:border-primary/20 transition-all duration-500 rounded-[2.5rem] overflow-hidden"
         >
-          <CardHeader className="pb-2">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+          <CardHeader className="pb-4">
+            <div className="flex items-center justify-between mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all">
                 {cap.icon}
               </div>
-              <Badge variant="outline" className="text-[8px] uppercase font-bold tracking-widest border-white/10 bg-white/5 text-muted-foreground">{cap.badge}</Badge>
+              <Badge variant="outline" className="text-[9px] px-3 py-1 uppercase font-black tracking-[0.2em] border-primary/20 bg-primary/5 text-primary">{cap.badge}</Badge>
             </div>
-            <CardTitle className="text-lg font-bold group-hover:text-primary transition-colors">{cap.title}</CardTitle>
+            <CardTitle className="text-xl font-black group-hover:text-primary transition-colors tracking-tight">{cap.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription className="text-sm text-muted-foreground leading-relaxed">
+            <CardDescription className="text-base text-muted-foreground/80 leading-relaxed font-medium">
               {cap.description}
             </CardDescription>
           </CardContent>
