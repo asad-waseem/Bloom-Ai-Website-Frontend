@@ -23,6 +23,7 @@ export const Preloader: React.FC = () => {
   const [shouldRender, setShouldRender] = useState(false)
 
   useEffect(() => {
+    // Check if we've already shown the loader in this session
     const hasSeenPreloader = sessionStorage.getItem('bloom_preloader_seen')
     
     if (hasSeenPreloader) {
@@ -31,6 +32,7 @@ export const Preloader: React.FC = () => {
       return
     }
 
+    // Force render on the first visit
     setShouldRender(true)
     
     const interval = setInterval(() => {
@@ -40,10 +42,12 @@ export const Preloader: React.FC = () => {
           setTimeout(() => {
             setLoading(false)
             sessionStorage.setItem('bloom_preloader_seen', 'true')
-            setTimeout(() => setShouldRender(false), 1000)
+            // Delay unmounting to allow the fade-out animation to complete
+            setTimeout(() => setShouldRender(false), 1100)
           }, 500)
           return 100
         }
+        // Varied progress increments for a more "organic" loading feel
         return prev + Math.floor(Math.random() * 15) + 5
       })
     }, 150)
