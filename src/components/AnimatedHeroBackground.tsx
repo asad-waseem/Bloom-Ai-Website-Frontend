@@ -33,30 +33,28 @@ export const AnimatedHeroBackground: React.FC = () => {
       constructor(w: number, h: number) {
         this.x = Math.random() * w
         this.y = Math.random() * h
-        this.vx = (Math.random() - 0.5) * 0.2
-        this.vy = (Math.random() - 0.5) * 0.2
-        this.size = Math.random() * 1.5 + 0.5
+        this.vx = (Math.random() - 0.5) * 0.15
+        this.vy = (Math.random() - 0.5) * 0.15
+        this.size = Math.random() * 1.2 + 0.4
         this.color = Math.random() > 0.5 ? '#3B82F6' : '#8B5CF6'
-        this.opacity = Math.random() * 0.5 + 0.2
+        this.opacity = Math.random() * 0.4 + 0.15
       }
 
       update(w: number, h: number) {
         this.x += this.vx
         this.y += this.vy
 
-        // Smooth boundaries
         if (this.x < 0) this.x = w
         if (this.x > w) this.x = 0
         if (this.y < 0) this.y = h
         if (this.y > h) this.y = 0
 
-        // Subtle mouse interaction
         const dx = mouse.x - this.x
         const dy = mouse.y - this.y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-        if (dist < 100) {
-          this.x -= dx * 0.01
-          this.y -= dy * 0.01
+        const distSq = dx * dx + dy * dy
+        if (distSq < 10000) { // 100 * 100
+          this.x -= dx * 0.005
+          this.y -= dy * 0.005
         }
       }
 
@@ -71,7 +69,8 @@ export const AnimatedHeroBackground: React.FC = () => {
 
     const init = () => {
       particles = []
-      const count = Math.min(Math.floor(window.innerWidth / 15), 80)
+      // Optimized count for better performance on all devices
+      const count = Math.min(Math.floor(window.innerWidth / 40), 45)
       for (let i = 0; i < count; i++) {
         particles.push(new Particle(canvas.width, canvas.height))
       }
@@ -80,25 +79,30 @@ export const AnimatedHeroBackground: React.FC = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       
-      particles.forEach((p, i) => {
+      const maxDistSq = 120 * 120 // Pre-calculate for speed
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]
         p.update(canvas.width, canvas.height)
         p.draw(ctx)
         
         for (let j = i + 1; j < particles.length; j++) {
-          const dx = p.x - particles[j].x
-          const dy = p.y - particles[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 150) {
+          const p2 = particles[j]
+          const dx = p.x - p2.x
+          const dy = p.y - p2.y
+          const distSq = dx * dx + dy * dy
+          
+          if (distSq < maxDistSq) {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
-            ctx.lineTo(particles[j].x, particles[j].y)
+            ctx.lineTo(p2.x, p2.y)
             ctx.strokeStyle = p.color
-            ctx.globalAlpha = (1 - dist / 150) * 0.1
-            ctx.lineWidth = 0.5
+            ctx.globalAlpha = (1 - Math.sqrt(distSq) / 120) * 0.08
+            ctx.lineWidth = 0.4
             ctx.stroke()
           }
         }
-      })
+      }
       animationFrameId = requestAnimationFrame(animate)
     }
 
@@ -108,7 +112,7 @@ export const AnimatedHeroBackground: React.FC = () => {
     }
 
     window.addEventListener('resize', resize)
-    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
     resize()
     animate()
 
@@ -122,8 +126,8 @@ export const AnimatedHeroBackground: React.FC = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-50"
-      style={{ zIndex: 0 }}
+      className="fixed inset-0 pointer-events-none opacity-30 dark:opacity-50"
+      style={{ zIndex: 0, willChange: 'transform' }}
     />
   )
 }
