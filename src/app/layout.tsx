@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { Preloader } from '@/components/Preloader';
 
 export const metadata: Metadata = {
   title: 'AI Bloom | The Intelligent AI Platform Showcase',
@@ -21,6 +22,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-background text-foreground">
         <ThemeProvider>
+          <Preloader />
           {children}
         </ThemeProvider>
       </body>
