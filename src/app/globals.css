@@ -4,50 +4,27 @@
 
 @layer base {
   :root {
-    /* Light Mode Palette - Crisp & Professional */
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 262 83% 58%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 217 91% 60%;
-    --radius: 1.5rem;
-  }
-
-  .dark {
-    /* Dark Mode Palette - Deep Premium Charcoal */
-    --background: 240 10% 2%;
+    /* AI Bloom Premium Palette - PRD Specific */
+    --background: 0 0% 7%; /* #121212 */
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.5%;
+    --card: 0 0% 9%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 2%;
+    --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
-    --primary: 217 91% 60%;
+    --primary: 265 100% 67%; /* #9F57FF - Vibrant Purple */
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 10%;
+    --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 262 83% 58%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 314 100% 64%; /* #FF47D3 - Electric Pink */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5% 12%;
-    --input: 240 5% 12%;
-    --ring: 217 91% 60%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 265 100% 67%;
+    --radius: 1.5rem;
   }
 }
 
@@ -62,80 +39,79 @@
   }
 }
 
-/* VIP Custom Utilities - Optimized */
+/* Glassmorphism Utilities */
 .glass {
-  @apply bg-white/40 dark:bg-black/30 backdrop-blur-2xl border border-white/20 dark:border-white/10 shadow-xl;
+  @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-xl;
   will-change: backdrop-filter;
 }
 
 .glass-card {
-  @apply bg-white/30 dark:bg-white/[0.03] backdrop-blur-xl border border-white/20 dark:border-white/[0.08] shadow-2xl transition-all duration-300 hover:border-primary/40;
+  @apply bg-white/[0.02] backdrop-blur-xl border border-white/5 shadow-2xl transition-all duration-300 hover:border-primary/40;
 }
 
 .apple-glass {
-  @apply bg-white/60 dark:bg-white/[0.02] backdrop-blur-2xl border border-white/40 dark:border-white/[0.1] shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] transition-all duration-300;
+  @apply bg-white/[0.01] backdrop-blur-2xl border border-white/[0.05] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] transition-all duration-500;
 }
 
 .animate-gradient-text {
-  background: linear-gradient(to right, #3B82F6, #8B5CF6, #EC4899, #3B82F6);
-  background-size: 300% auto;
+  background: linear-gradient(to right, #9F57FF, #FF47D3, #9F57FF);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-text 8s linear infinite;
+  animation: gradient-text 5s linear infinite;
   will-change: background-position;
 }
 
 @keyframes gradient-text {
   0% { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
 .mesh-gradient {
-  background-color: hsl(var(--background));
+  background-color: #121212;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.1) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(262, 83%, 58%, 0.1) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, hsla(217, 91%, 60%, 0.05) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(265, 100%, 67%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(314, 100%, 64%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, hsla(265, 100%, 67%, 0.1) 0px, transparent 50%);
 }
 
 .hero-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(159, 87, 255, 0.15) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .heading-glow {
-  text-shadow: 0 0 50px hsla(var(--primary) / 0.4);
+  text-shadow: 0 0 40px hsla(var(--primary) / 0.5);
 }
 
 .button-glow {
-  box-shadow: 0 0 20px hsla(var(--primary) / 0.3);
+  box-shadow: 0 0 20px hsla(var(--primary) / 0.4);
   @apply transition-all duration-300;
 }
 
 .button-glow:hover {
-  box-shadow: 0 0 35px hsla(var(--primary) / 0.5);
+  box-shadow: 0 0 35px hsla(var(--primary) / 0.6);
   @apply -translate-y-0.5;
 }
 
 .grid-bg {
-  background-image: linear-gradient(to right, hsla(var(--foreground) / 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, hsla(var(--foreground) / 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: linear-gradient(to right, hsla(var(--foreground) / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, hsla(var(--foreground) / 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
-/* Scroll Optimization */
+/* Performance Optimizations */
 section {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px;
+  contain-intrinsic-size: 1px 800px;
 }
 
 #hero {
   content-visibility: visible;
 }
 
-/* Smooth Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -143,12 +119,12 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsla(var(--foreground) / 0.1);
+  background: hsla(var(--primary) / 0.3);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsla(var(--foreground) / 0.2);
+  background: hsla(var(--primary) / 0.5);
 }
 
 .no-scrollbar::-webkit-scrollbar {

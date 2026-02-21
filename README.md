@@ -1,70 +1,46 @@
-# AI Bloom | The Intelligent AI Platform Showcase
+# AI Bloom | Enterprise AI Orchestration Platform
 
-This is a high-performance, Next.js 15 based AI platform showcase. Engineered for "million-dollar" aesthetics with 60+ FPS smoothness and Apple-inspired UI.
+AI Bloom is a high-performance, Next.js 15 based platform designed for high-scale artificial intelligence orchestration. It features a premium, vibrant aesthetic built for modern enterprises.
 
-## 🚀 Getting Started Locally
+## 🚀 Quick Start
 
-### 1. Prerequisites
-- **Node.js**: 18.x or higher
-- **NPM** or **PNPM**
-- **Git**: Installed and configured
-
-### 2. Initial Setup
-Once you have downloaded the ZIP file and extracted it:
+### 1. Installation
+Extract the project files and run:
 ```bash
-# Navigate to the project folder
-cd ai-bloom
-
-# Install dependencies
 npm install
 ```
 
-### 3. Environment Configuration
-Create a `.env` file in the root directory and add your Gemini API Key:
+### 2. Environment Setup
+Create a `.env` file in the root:
 ```env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
+GEMINI_API_KEY=your_key_here
 ```
-*Note: You can get a key from the [Google AI Studio](https://aistudio.google.com/).*
 
-### 4. Run Development Server
+### 3. Development
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 📤 Deploying to Your GitHub
+## 📤 Deploy to GitHub
+To push this project to your repository:
 
-Follow these exact steps to push this code to your repository (`https://github.com/asad-waseem/Bloom-Ai-Website-Frontend.git`):
+```bash
+git init
+git add .
+git commit -m "Initial commit: AI Bloom Platform"
+git branch -M main
+git remote add origin https://github.com/asad-waseem/Bloom-Ai-Website-Frontend.git
+git push -u origin main
+```
 
-1. **Initialize Git**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Million-dollar AI Platform"
-   ```
-2. **Connect & Push**:
-   ```bash
-   git branch -M main
-   git remote add origin https://github.com/asad-waseem/Bloom-Ai-Website-Frontend.git
-   git push -u origin main
-   ```
-
----
-
-## 🛠 Tech Stack Details
-- **Frontend**: Next.js 15 (App Router), React 19, Tailwind CSS.
-- **UI Components**: Shadcn/UI with custom Apple-style glassmorphism.
-- **AI Engine**: Google Genkit + Gemini 2.0 Flash.
-- **Performance**: Optimized Canvas particle system for 60+ FPS.
-
-## 💎 VIP Features
-- **Neural Preloader**: Session-aware loading screen with high-tech animations.
-- **Dynamic Stats**: Dashboard-style infrastructure metrics with real-time hover effects.
-- **Intelligent Routing**: AI-powered contact form that categorizes messages automatically.
-- **Smooth Animations**: Framer Motion and optimized CSS rendering hints.
+## 💎 Key Features
+- **Neural Orchestration**: High-performance AI agent management.
+- **Edge Inference**: Zero-latency responses via globally distributed nodes.
+- **Vibrant UI**: Modern Purple/Pink palette optimized for 60+ FPS.
+- **AI Routing**: Intelligent contact form with automated department categorization.
 
 ---
-
-© 2024 Bloom AI Labs. Built with Firebase Studio.
+© 2024 AI Bloom Labs. Built for the future of intelligence.
