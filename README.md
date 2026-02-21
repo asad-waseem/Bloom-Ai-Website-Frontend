@@ -39,7 +39,7 @@ git push -u origin main
 ## 💎 Key Features
 - **Neural Orchestration**: High-performance AI agent management.
 - **Edge Inference**: Zero-latency responses via globally distributed nodes.
-- **Vibrant UI**: Modern Purple/Pink palette optimized for 60+ FPS.
+- **Premium UI**: Modern Apple-style glassmorphism optimized for 60+ FPS.
 - **AI Routing**: Intelligent contact form with automated department categorization.
 
 ---
