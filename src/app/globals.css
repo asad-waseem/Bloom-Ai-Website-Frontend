@@ -4,20 +4,19 @@
 
 @layer base {
   :root {
-    /* AI Bloom Professional Palette - Reverted from Purple to Interstellar Blue */
-    --background: 224 71% 4%; /* Deep Space Black-Blue */
+    --background: 224 71% 4%;
     --foreground: 0 0% 98%;
     --card: 224 71% 6%;
     --card-foreground: 0 0% 98%;
     --popover: 224 71% 4%;
     --popover-foreground: 0 0% 98%;
-    --primary: 217 91% 60%; /* Electric Blue */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
     --secondary: 222 47% 11%;
     --secondary-foreground: 0 0% 98%;
     --muted: 223 47% 11%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217 91% 60%; /* Consistent Blue Accent */
+    --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -39,7 +38,6 @@
   }
 }
 
-/* Glassmorphism Utilities */
 .glass {
   @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-xl;
 }
