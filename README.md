@@ -34,21 +34,20 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📤 Deploying to GitHub
+## 📤 Deploying to Your GitHub
 
-Follow these steps to push your code to a new GitHub repository:
+Follow these exact steps to push this code to your repository (`https://github.com/asad-waseem/Bloom-Ai-Website-Frontend.git`):
 
-1. **Create Repository**: Go to GitHub and create a new, empty repository named `ai-bloom`.
-2. **Initialize Git**:
+1. **Initialize Git**:
    ```bash
    git init
    git add .
    git commit -m "Initial commit: Million-dollar AI Platform"
    ```
-3. **Connect & Push**:
+2. **Connect & Push**:
    ```bash
    git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/ai-bloom.git
+   git remote add origin https://github.com/asad-waseem/Bloom-Ai-Website-Frontend.git
    git push -u origin main
    ```
 
