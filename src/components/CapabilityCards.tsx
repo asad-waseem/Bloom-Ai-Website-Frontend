@@ -46,23 +46,23 @@ const capabilities = [
 
 export const CapabilityCards: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {capabilities.map((cap, idx) => (
         <Card 
           key={idx} 
-          className="group relative apple-glass border-transparent hover:border-primary/20 transition-all duration-500 rounded-[2.5rem] overflow-hidden"
+          className="group relative apple-glass border-transparent hover:border-primary/20 transition-all duration-500 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden"
         >
-          <CardHeader className="pb-4">
-            <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all">
+          <CardHeader className="pb-4 p-6 md:p-8">
+            <div className="flex items-center justify-between mb-4 md:mb-6">
+              <div className="w-10 h-10 md:w-12 h-12 rounded-xl md:rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all">
                 {cap.icon}
               </div>
-              <Badge variant="outline" className="text-[9px] px-3 py-1 uppercase font-black tracking-[0.2em] border-primary/20 bg-primary/5 text-primary">{cap.badge}</Badge>
+              <Badge variant="outline" className="text-[8px] md:text-[9px] px-2 md:px-3 py-1 uppercase font-black tracking-[0.2em] border-primary/20 bg-primary/5 text-primary">{cap.badge}</Badge>
             </div>
-            <CardTitle className="text-xl font-black group-hover:text-primary transition-colors tracking-tight">{cap.title}</CardTitle>
+            <CardTitle className="text-lg md:text-xl font-black group-hover:text-primary transition-colors tracking-tight">{cap.title}</CardTitle>
           </CardHeader>
-          <CardContent>
-            <CardDescription className="text-base text-muted-foreground/80 leading-relaxed font-medium">
+          <CardContent className="px-6 md:px-8 pb-6 md:pb-8">
+            <CardDescription className="text-sm md:text-base text-muted-foreground/80 leading-relaxed font-medium">
               {cap.description}
             </CardDescription>
           </CardContent>
